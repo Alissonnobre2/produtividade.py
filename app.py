@@ -66,4 +66,45 @@ with col_r:
     st.subheader("Distribuição por Setor")
     fig_pie = px.pie(df_detalhado, values="Quantidade", names="Categoria", hole=0.6, 
                      color_discrete_sequence=["#004E92", "#0072FF", "#00C6FF"])
-    fig_pie.update_layout(paper_
+    fig_pie.update_layout(paper_bgcolor='rgba(0,0,0,0)', font_color=azul_texto, height=300)
+    st.plotly_chart(fig_pie, use_container_width=True)
+
+st.markdown("---")
+
+# --- 5. PARTE DE BAIXO (4 COLUNAS COM PROD. INDIVIDUAL) ---
+st.subheader("📈 Evolução Individual por Semana")
+
+cols_semanas = st.columns(4)
+semanas = ["Semana 1", "Semana 2", "Semana 3", "Semana 4"]
+
+for i, sem in enumerate(semanas):
+    with cols_semanas[i]:
+        # Filtra a semana e transforma para o formato de gráfico
+        df_fatia = df_diaria[df_diaria["Semana"] == sem]
+        df_fatia_melt = df_fatia.melt(id_vars=["Data", "Semana"], var_name="Colaborador", value_name="Produção")
+        
+        # Gráfico de linha reta (linear) com a equipe
+        fig_sem = px.line(
+            df_fatia_melt, x="Data", y="Produção", color="Colaborador",
+            title=sem, markers=True,
+            color_discrete_map=cores_equipe
+        )
+        
+        fig_sem.update_traces(line_shape="linear", line_width=2, marker=dict(size=6))
+        fig_sem.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', 
+            plot_bgcolor='rgba(0,0,0,0)', 
+            font_color=azul_texto,
+            height=280,
+            xaxis_title=None,
+            yaxis_title=None,
+            showlegend=False, # Oculta legenda individual para não poluir
+            margin=dict(l=10, r=10, t=40, b=10)
+        )
+        fig_sem.update_xaxes(showgrid=False, color="#555")
+        fig_sem.update_yaxes(showgrid=True, gridcolor="#2D3139", color="#555", range=[0, 15]) # Range fixo para comparar semanas
+        
+        st.plotly_chart(fig_sem, use_container_width=True)
+
+# Legenda centralizada no final
+st.markdown("<div style='text-align: center; color: #8ECAE6;'>● Amanda (Azul Claro) &nbsp;&nbsp; ● Alisson (Azul Médio) &nbsp;&nbsp; ● Gabriele (Azul Neon)</div>", unsafe_allow_html=True)
