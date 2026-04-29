@@ -8,7 +8,7 @@ st.set_page_config(page_title="Dashboard Produtividade Azul", layout="wide")
 
 # Cores da paleta: Azul Escuro, Azul Médio, Azul Turquesa, Cinza Azulado
 azul_fundo = "#f8f8ec"
-azul_card = "#1B1E26"
+azul_card = "#aedd2b"
 azul_texto = "#E0E0E0"
 paleta_azul = ["#004E92", "#0072FF", "#00C6FF", "#3A86FF", "#8ECAE6"]
 
