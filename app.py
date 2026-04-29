@@ -63,7 +63,7 @@ c1, c2, c3, c4 = st.columns(4)
 c1.metric("Total Geral", "321", delta="+15% vs Março")
 c2.metric("Líder do Mês", "Gabriele")
 c3.metric("Foco Setorial", "Rh Bahia")
-c4.metric("Status Equipe", "Alta Performance")
+
 
 st.markdown("---")
 
@@ -187,7 +187,7 @@ total_marco = df_detalhado["Quantidade"].sum()
 c1.metric("Total Março", f"{total_marco}")
 c2.metric("Líder Março", "Alisson") # Exemplo
 c3.metric("Setor Crítico", "Rh Bahia")
-c4.metric("Status", "Finalizado")
+
 
 st.markdown("---")
 
