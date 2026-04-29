@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Dashboard Produtividade Azul", layout="wide")
 
 # Cores da paleta: Azul Escuro, Azul Médio, Azul Turquesa, Cinza Azulado
-azul_fundo = "#0E1117"
+azul_fundo = "#f8f8ec"
 azul_card = "#1B1E26"
 azul_texto = "#E0E0E0"
 paleta_azul = ["#004E92", "#0072FF", "#00C6FF", "#3A86FF", "#8ECAE6"]
